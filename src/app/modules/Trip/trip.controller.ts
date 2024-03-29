@@ -56,70 +56,7 @@ const getTripsController = catchAsync(
   }
 );
 
-const sendRequestController = catchAsync(
-  async (req: Request, res: Response): Promise<void> => {
-    const { tripId } = req.params;
-    const { userId } = req.body;
-
-    const request = await tripServices.sendTravelBuddyRequest(tripId, userId);
-
-    sendResponse(res, {
-      success: true,
-      statusCode: 201,
-      message: "Travel buddy request sent successfully",
-      data: request,
-    });
-  }
-);
-
-const getPotentialBuddiesController = catchAsync(
-  async (req: Request, res: Response): Promise<void> => {
-    const { tripId } = req.params;
-
-    const potentialBuddies = await tripServices.getPotentialTravelBuddies(
-      tripId
-    );
-
-    sendResponse(res, {
-      success: true,
-      statusCode: 200,
-      message: "Potential travel buddies retrieved successfully",
-      data: potentialBuddies,
-    });
-  }
-);
-
-const respondToBuddyRequestController = catchAsync(
-  async (req: Request, res: Response): Promise<void> => {
-    const { buddyId } = req.params;
-    const { status } = req.body;
-
-    const updatedRequest = await tripServices.respondToTravelBuddyRequest(
-      buddyId,
-      status
-    );
-
-    if (!updatedRequest) {
-      res.status(404).json({
-        success: false,
-        message: "Travel buddy request not found.",
-      });
-      return;
-    }
-
-    sendResponse(res, {
-      success: true,
-      statusCode: 200,
-      message: "Travel buddy request responded successfully",
-      data: updatedRequest,
-    });
-  }
-);
-
 export const tripController = {
   createTrip,
   getTripsController,
-  sendRequestController,
-  getPotentialBuddiesController,
-  respondToBuddyRequestController,
 };
