@@ -40,6 +40,7 @@ const getTravelBuddies = async (
 
 const respondTravelBuddyRequest = async (
   buddyId: string,
+  tripId: string,
   status: string
 ): Promise<TravelBuddyRequest | null> => {
   const updatedRequest = await prisma.travelBuddyRequest.update({
@@ -47,6 +48,7 @@ const respondTravelBuddyRequest = async (
       id: buddyId,
     },
     data: {
+      tripId,
       status,
       updatedAt: new Date(),
     },

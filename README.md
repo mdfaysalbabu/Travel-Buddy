@@ -4,6 +4,10 @@
 
 [https://travel-buddy-chi.vercel.app](https://travel-buddy-chi.vercel.app)
 
+## Video Description
+
+[https://drive.google.com/file/d/1LEriE93uEr4Lq1H8VUU8WJF2o4KAKRTW/view?usp=sharing](https://drive.google.com/file/d/1LEriE93uEr4Lq1H8VUU8WJF2o4KAKRTW/view?usp=sharing)
+
 ## Overview
 
 Travel Buddy App is a web application designed to help users plan and organize their trips efficiently. Whether you're traveling solo or with friends, Travel Buddy App provides features to manage your trips, find potential travel buddies, and update your user profile seamlessly.

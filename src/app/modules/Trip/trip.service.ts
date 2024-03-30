@@ -33,7 +33,10 @@ const getFilteredTrips = async (
   options: IPaginationOption
 ) => {
   // Calculate pagination parameters
-  const { page = 1, limit = 10 } = options;
+  let { page, limit } = options;
+  page = Number(page) || 1;
+  limit = Number(limit) || 10;
+
   const skip = (page - 1) * limit;
 
   // Destructure filter parameters
@@ -42,18 +45,18 @@ const getFilteredTrips = async (
   // Build where conditions based on filter parameters
   const andCondition: Prisma.TripWhereInput[] = [];
 
-  if (searchTerm) {
+  if (params?.searchTerm) {
     andCondition.push({
       OR: tripSearchAbleFields.map((field) => ({
         [field]: {
-          contains: searchTerm,
+          contains: params?.searchTerm,
           mode: "insensitive",
         },
       })),
     });
   }
 
-  if (Object.keys(filterData).length > 0) {
+  if (Object.keys(filterData)?.length > 0) {
     const { destination, startDate, endDate, budget } = filterData;
 
     // Build filter conditions
@@ -72,8 +75,8 @@ const getFilteredTrips = async (
     if (budget && (budget.minBudget || budget.maxBudget)) {
       andCondition.push({
         budget: {
-          gte: budget.minBudget,
-          lte: budget.maxBudget,
+          gte: Number(budget.minBudget),
+          lte: Number(budget.maxBudget),
         },
       });
     }

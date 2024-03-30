@@ -40,10 +40,11 @@ const getBuddiesController = catchAsync(
 const respondBuddyRequestController = catchAsync(
   async (req: Request, res: Response): Promise<void> => {
     const { buddyId } = req.params;
-    const { status } = req.body;
+    const { tripId, status } = req.body;
 
     const updatedRequest = await travelBuddyServices.respondTravelBuddyRequest(
       buddyId,
+      tripId,
       status
     );
 
