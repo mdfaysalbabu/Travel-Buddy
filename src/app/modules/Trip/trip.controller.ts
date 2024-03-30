@@ -9,11 +9,10 @@ import httpStatus from "http-status";
 const createTrip = catchAsync(
   async (req: Request, res: Response): Promise<void> => {
     const  {userId}  = req.user;
-    console.log(userId);
     if (!userId) {
       res.status(401).json({
         success: false,
-        message: "Unauthorized: User ID not found",
+        message: "Unauthorized User ID not found",
       });
       return;
     }

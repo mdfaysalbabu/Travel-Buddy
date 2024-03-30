@@ -8,7 +8,6 @@ const router = express.Router();
 router.post(
   "/trip/:tripId/request",
   auth(),
-  // validateRequest(travelBuddyValidation.createTravelBuddyRequestValidation),
   travelBuddyController.sendRequestController
 );
 
@@ -21,9 +20,6 @@ router.get(
 router.put(
   "/travel-buddies/:buddyId/respond",
   auth(),
-  // validateRequest(
-  //   travelBuddyValidation.updateTravelBuddyRequestStatusValidation
-  // ),
   travelBuddyController.respondBuddyRequestController
 );
 export const travelBuddyRoutes = router;

@@ -15,7 +15,7 @@ const registerUser = async (
   });
 
   if (userExists) {
-    throw new Error("Email already in use.");
+    throw new Error("User already exists");
   }
 
   const hashedPassword = await bcrypt.hash(password, 10);
@@ -32,16 +32,8 @@ const registerUser = async (
     return newUser;
   });
 
-  //   const token = generateToken(user.id);
-
   return { ...user };
 };
-
-// const generateToken = (userId: string): string => {
-//   return jwt.sign({ userId }, process.env.JWT_SECRET || "your-secret-key", {
-//     expiresIn: process.env.EXPIRES_IN,
-//   });
-// };
 
 const loginUser = async (email: string, password: string): Promise<any> => {
   const user = await prisma.user.findUnique({
@@ -73,5 +65,5 @@ const generateToken = (userId: string): string => {
 };
 export const userServices = {
   registerUser,
-  loginUser
+  loginUser,
 };

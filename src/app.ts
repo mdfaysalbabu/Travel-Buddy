@@ -8,7 +8,7 @@ app.use(cors());
 
 //parser
 app.use(express.json());
-app.use(globalErrorHandler);
+
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req: Request, res: Response) => {
@@ -19,6 +19,6 @@ app.get("/", (req: Request, res: Response) => {
 
 app.use("/api", router);
 app.use(globalErrorHandler);
-app.use(notFound)
+app.use(notFound);
 
 export default app;
