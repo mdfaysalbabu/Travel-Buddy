@@ -41,7 +41,6 @@ const respondBuddyRequestController = catchAsync(
   async (req: Request, res: Response): Promise<void> => {
     const { buddyId } = req.params;
     const { tripId, status } = req.body;
-
     const updatedRequest = await travelBuddyServices.respondTravelBuddyRequest(
       buddyId,
       tripId,

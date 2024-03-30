@@ -45,7 +45,8 @@ const getFilteredTrips = async (
   // Build where conditions based on filter parameters
   const andCondition: Prisma.TripWhereInput[] = [];
 
-  if (params?.searchTerm) {
+  if (params && params?.searchTerm) {
+    console.log("Search term:", params.searchTerm);
     andCondition.push({
       OR: tripSearchAbleFields.map((field) => ({
         [field]: {

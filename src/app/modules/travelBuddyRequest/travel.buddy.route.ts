@@ -1,8 +1,7 @@
 import express from "express";
 import auth from "../../middleWare/auth";
 import { travelBuddyController } from "./travel.buddy.controller";
-import validateRequest from "../../middleWare/validateRequest";
-import { travelBuddyValidation } from "./travelBuddy.validation";
+
 
 const router = express.Router();
 router.post(
