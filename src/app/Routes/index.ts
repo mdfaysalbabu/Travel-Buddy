@@ -2,7 +2,6 @@ import express from "express";
 import { userRoutes } from "../modules/User/user.routes";
 import { tripRoutes } from "../modules/Trip/trip.route";
 import { userProfileRoutes } from "../modules/userProfile/userProfile.route";
-import { travelBuddyRoutes } from "../modules/travelBuddyRequest/travel.buddy.route";
 
 const router = express.Router();
 
@@ -18,10 +17,6 @@ const moduleRoutes = [
   {
     path: "/",
     route: userProfileRoutes,
-  },
-  {
-    path: "/",
-    route: travelBuddyRoutes,
   },
 ];
 

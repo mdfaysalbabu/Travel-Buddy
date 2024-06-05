@@ -1,10 +1,10 @@
 export type ITripFilterRequest = {
-  destination?: string;
+  destination?: string | undefined;
+  type?: string | undefined;
+  description?: string | undefined;
   startDate?: string;
   endDate?: string;
-  budget?: {
-    minBudget?: number;
-    maxBudget?: number;
-  };
+  minBudget?: number | undefined;
+  maxBudget?: number | undefined;
   searchTerm?: string;
 };

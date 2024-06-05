@@ -4,7 +4,12 @@ import router from "./app/Routes";
 import globalErrorHandler from "./app/middleWare/globalErrorHandler";
 import notFound from "./app/middleWare/notFound";
 const app: Application = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://travel-buddy-frontend.vercel.app",
+    credentials: true,
+  })
+);
 
 //parser
 app.use(express.json());

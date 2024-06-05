@@ -1,4 +1,4 @@
-import { PrismaClient, User } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
@@ -14,7 +14,7 @@ const getUserProfile = async (
   userId: string | undefined
 ): Promise<TUser | null> => {
   if (!userId) {
-    return null;
+    return null; // Return null or handle the case where userId is not defined
   }
 
   const userProfile = await prisma.user.findUnique({
@@ -38,23 +38,18 @@ const updateUserProfile = async (
   name: string,
   email: string
 ): Promise<TUser | null> => {
-  try {
-    const updatedProfile = await prisma.user.update({
-      where: { id: userId },
-      data: { name, email },
-      select: {
-        id: true,
-        name: true,
-        email: true,
-        createdAt: true,
-        updatedAt: true,
-      },
-    });
-    return updatedProfile;
-  } catch (error) {
-    console.error("Error updating user profile:", error);
-    return null;
-  }
+  const updatedProfile = await prisma.user.update({
+    where: { id: userId },
+    data: { name, email },
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      createdAt: true,
+      updatedAt: true,
+    },
+  });
+  return updatedProfile;
 };
 
 export const userProfileService = {

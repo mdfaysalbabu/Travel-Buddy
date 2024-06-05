@@ -16,4 +16,28 @@ router.post(
 );
 router.get("/trips", tripController.getTripsController);
 
+router.get("/trips/:id", tripController.getSingleTrip);
+
+router.get("/userTrip", auth(), tripController.getUserTrip);
+
+router.post(
+  "/trip/:tripId/request",
+  auth(),
+  tripController.sendRequestController
+);
+
+router.get(
+  "/travel-buddies",
+  auth(),
+  tripController.getPotentialBuddiesController
+);
+
+router.put(
+  "/travel-buddies/:buddyId/respond",
+  auth(),
+  tripController.respondToBuddyRequestController
+);
+
+router.delete("/trip/:tripId", auth(), tripController.deleteTrip);
+
 export const tripRoutes = router;
